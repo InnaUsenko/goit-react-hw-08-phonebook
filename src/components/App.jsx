@@ -12,6 +12,8 @@ const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
+const APP_PATH = '/goit-react-hw-08-phonebook';
+
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -24,27 +26,33 @@ export const App = () => {
     <b>Refreshing user...</b>
   ) : (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path={`${APP_PATH}/`} element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route
-          path="/register"
+          path={`${APP_PATH}/register`}
           element={
             <RestrictedRoute
-              redirectTo="/contacts"
+              redirectTo={`${APP_PATH}/contacts`}
               component={<RegisterPage />}
             />
           }
         />
         <Route
-          path="/login"
+          path={`${APP_PATH}/login`}
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+            <RestrictedRoute
+              redirectTo={`${APP_PATH}/contacts`}
+              component={<LoginPage />}
+            />
           }
         />
         <Route
-          path="/contacts"
+          path={`${APP_PATH}/contacts`}
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            <PrivateRoute
+              redirectTo={`${APP_PATH}/login`}
+              component={<ContactsPage />}
+            />
           }
         />
       </Route>
