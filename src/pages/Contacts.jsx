@@ -4,7 +4,6 @@ import { ContactForm } from '../components/ContactForm/ContactForm';
 import { ContactFilter } from '../components/ContactFilter/ContactFilter';
 import { ContactList } from '../components/ContactList/ContactList';
 import { useSelector, useDispatch } from 'react-redux';
-import { Helmet } from 'react-helmet';
 
 import { fetchContacts } from '../redux/contacts/contactsOperations';
 
@@ -23,9 +22,6 @@ export default function Tasks() {
         marginLeft: '8px',
       }}
     >
-      <Helmet>
-        <title>Your contacts</title>
-      </Helmet>
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
